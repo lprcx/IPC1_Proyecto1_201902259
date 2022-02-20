@@ -1,20 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-package ipc1.proyecto.pkg1_201902259;
 
-/**
- *
- * @author Compufire
- */
+package ipc1.proyecto.pkg1_201902259;
+import Interfazg.login;
+
 public class IPC1Proyecto1_201902259 {
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        login ventana = new login();
+        
+        
+        
+                
+                
+                
+                
+                
+                
     }
     
 }
