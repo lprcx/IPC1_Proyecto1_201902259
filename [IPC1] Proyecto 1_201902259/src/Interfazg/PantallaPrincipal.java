@@ -37,9 +37,10 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
         conjpest.addTab("Prestamos", null, pres, null);
         
         PestañaReportes repor = new PestañaReportes();
-        conjpest.addTab("Prestamos", null, repor, null);
+        conjpest.addTab("Reportes", null, repor, null);
         
-        
+        PestañaGraficos graf = new PestañaGraficos();
+        conjpest.addTab("Graficos", null, graf, null);
         
          //ICONO DE LA APLICACION
         this.setIconImage(new ImageIcon(getClass().getResource("Usac_logo.png")).getImage());

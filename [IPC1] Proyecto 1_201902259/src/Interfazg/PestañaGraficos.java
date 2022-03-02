@@ -4,8 +4,35 @@
  */
 package Interfazg;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
 
-public class PestañaGraficos {
+
+public class PestañaGraficos extends JPanel implements ActionListener {
+    JButton h;
+    
+    public PestañaGraficos() {
+        
+        //Boton de prueba xd
+        h = new JButton("Libros");
+        h.setBounds(25,80,75,20);
+        h.setFont(new Font("Biome Light", Font.BOLD, 12));
+        h.setBackground(Color.lightGray);
+        this.add(h);
+        
+        
+        
+        
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
+    }
     
 }
