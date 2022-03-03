@@ -3,11 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Interfazg;
+import Clases.Libro;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import ipc1.proyecto.pkg1_201902259.IPC1Proyecto1_201902259;
 
 
 public class PestañaLibros extends JPanel implements ActionListener{
@@ -85,15 +87,14 @@ public class PestañaLibros extends JPanel implements ActionListener{
         String[] tipoo = {"Libro","Revista","Libro Electronico"};
         tipo = new JComboBox(tipoo);
         tipo.setBounds(100,175,100,28);
+        tipo.addActionListener(this);
+       
         this.add(tipo);
         
         //Tablaxd
         String[] encabezado = {"ID Libro", "Nombre Libro", "Autor", "Tipo", "Copias", "Disponibles", "Ocupados"};
-        Object[][] xx = {
-            {"1", "Libro 1", "USAC", "Libro", "10", "2", "8"},
-            {"2", "Libro 2", "USAC", "Revista", "10", "2", "8"}
-        };
-        tablita = new JTable(xx, encabezado);
+        datos = IPC1Proyecto1_201902259.tablitalibros();
+        tablita = new JTable(datos, encabezado);
         JScrollPane scroll = new JScrollPane(tablita);
         scroll.setBounds(220, 10, 725,400);
         scroll.setVisible(true);
@@ -121,8 +122,40 @@ public class PestañaLibros extends JPanel implements ActionListener{
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        
+    public void actionPerformed(ActionEvent ae) {
+        int id = Integer.parseInt(numID.getText());
+        String titulo = Nlibro.getText();
+        String autor = Aut.getText();
+        int copias = Integer.parseInt(Copi.getText());
+        int Tipo = 0;
+        switch((String) tipo.getSelectedItem()){
+            case "Libro":
+                Tipo = 1;
+                break;
+            case "Revista":
+                Tipo = 2;
+                break;
+            case "Libro Electronico":
+                Tipo = 3;
+                break;
+        }
+                
+        if (ae.getSource() == regis) {
+            try{
+                Libro nuevo = new Libro(id, titulo, autor, Tipo, copias,1, 0);
+                IPC1Proyecto1_201902259.crearlibro(nuevo);
+                IPC1Proyecto1_201902259.verlibros();
+                numID.setText("");
+                Nlibro.setText("");
+                Aut.setText("");
+                Copi.setText("");
+                
+            }catch(Exception e){
+                
+            }
+            
+            
+        }
     }
     
 }

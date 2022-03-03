@@ -57,6 +57,11 @@ public class PestañaReportes extends JPanel implements ActionListener {
         scroll.setVisible(true);
         this.add(scroll);
 
+        //Diseño del Panel
+        this.setLayout(null);
+        
+        
+        
     }
 
     @Override

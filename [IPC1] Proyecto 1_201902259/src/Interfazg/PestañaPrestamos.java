@@ -67,7 +67,7 @@ public class PestañaPrestamos extends JPanel implements ActionListener {
 
         //Boton prestar libro
         preslib = new JButton("Prestar libro");
-        preslib.setBounds(20,60,100,20);
+        preslib.setBounds(20,250,100,20);
         preslib.setFont(new Font("Biome Light", Font.BOLD, 12));
         preslib.setBackground(Color.lightGray);
         this.add(preslib);
@@ -87,13 +87,14 @@ public class PestañaPrestamos extends JPanel implements ActionListener {
     
         //Boton de Carga masiva en la tabla2
         cargas = new JButton("Carga Masiva");
-        cargas.setBounds(20,300,150,25);
+        cargas.setBounds(20, 300,150,25);
         cargas.setFont(new Font("Biome Light", Font.BOLD, 15));
         cargas.addActionListener(this);
         cargas.setBackground(Color.lightGray);
         this.add(cargas);
     
-    
+    //Diseño del Panel
+        this.setLayout(null);
     
     
     }

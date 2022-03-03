@@ -27,6 +27,9 @@ public class PestañaGraficos extends JPanel implements ActionListener {
         
         
         
+        //Diseño del Panel
+        this.setLayout(null);
+        
         
     }
 
