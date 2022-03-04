@@ -67,8 +67,8 @@ public class PestañaPrestamos extends JPanel implements ActionListener {
 
         //Boton prestar libro
         preslib = new JButton("Prestar libro");
-        preslib.setBounds(20,250,100,20);
-        preslib.setFont(new Font("Biome Light", Font.BOLD, 12));
+        preslib.setBounds(20,250,150,20);
+        preslib.setFont(new Font("Biome Light", Font.BOLD, 15));
         preslib.setBackground(Color.lightGray);
         this.add(preslib);
     

@@ -34,12 +34,12 @@ public class PestañaReportes extends JPanel implements ActionListener {
         //Combo Box tipo de Reporte
         String[] tipoor = {"Reportes de Usuario", "Reportes de Libros", "Reportes de Prestamos"};
         tipor = new JComboBox(tipoor);
-        tipor.setBounds(140, 15, 120, 28);
+        tipor.setBounds(140, 15, 160, 28);
         this.add(tipor);
         
         //Botoncito generar
         gen = new JButton("Libros");
-        gen.setBounds(40,30,75,20);
+        gen.setBounds(40,70,75,20);
         gen.setFont(new Font("Biome Light", Font.BOLD, 12));
         gen.setBackground(Color.lightGray);
         this.add(gen);
@@ -53,7 +53,7 @@ public class PestañaReportes extends JPanel implements ActionListener {
         };
         tablita3 = new JTable(xx3, encabezado3);
         JScrollPane scroll = new JScrollPane(tablita3);
-        scroll.setBounds(220, 10, 725,400);
+        scroll.setBounds(350, 10, 600,400);
         scroll.setVisible(true);
         this.add(scroll);
 

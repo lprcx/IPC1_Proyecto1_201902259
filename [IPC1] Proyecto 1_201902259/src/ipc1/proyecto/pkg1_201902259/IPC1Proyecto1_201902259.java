@@ -66,4 +66,12 @@ public class IPC1Proyecto1_201902259 {
         }
         return contenido;
     }
+    public static boolean validid(int id){
+        for (int i = 0; i < contlibros; i++) {
+            if (id==libros[i].getId()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

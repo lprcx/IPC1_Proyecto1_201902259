@@ -44,14 +44,7 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
         PestañaGraficos graf = new PestañaGraficos();
         conjpest.addTab("Graficos", null, graf, null);
         
-        //Boton actualizar
-        actualizar = new JButton("Actualizar");
-        actualizar.setBounds(700,0,150,25);
-        actualizar.setFont(new Font("Biome Light", Font.BOLD, 15));
-        actualizar.addActionListener(this);
-        actualizar.setBackground(Color.lightGray);
-        this.add(actualizar);
-        
+                
          //ICONO DE LA APLICACION
         this.setIconImage(new ImageIcon(getClass().getResource("Usac_logo.png")).getImage());
         
@@ -70,11 +63,7 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == actualizar) {
-            PantallaPrincipal p = new PantallaPrincipal();
-            this.dispose();
-            
-        }
+        
     }
     
 }
