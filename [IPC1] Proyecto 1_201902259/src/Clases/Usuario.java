@@ -17,7 +17,7 @@ public class Usuario {
     private int tipo;
 
     public Usuario(int id, String user, String password, String facultad, String carrera, int tipo) {
-        this.id = id;
+        this.id = id; 
         this.user = user;
         this.password = password;
         this.facultad = facultad;
