@@ -86,7 +86,6 @@ public class login extends JFrame implements ActionListener {
         this.setResizable(false);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
     }
@@ -103,14 +102,14 @@ public class login extends JFrame implements ActionListener {
                         PantallaPrincipal p = new PantallaPrincipal();
                         this.dispose();
 
-                    }else{
+                    } else {
                         JOptionPane.showMessageDialog(this, "Usuario sin permisos para acceder al sistema");
-                    
+
                     }
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(this, "Contraseña Inválida");
                 }
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "Usuario no válido");
             }
         } else if (e.getSource() == botcarga) {

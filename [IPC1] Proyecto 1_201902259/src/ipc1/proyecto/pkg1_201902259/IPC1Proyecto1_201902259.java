@@ -2,6 +2,7 @@
 package ipc1.proyecto.pkg1_201902259;
 import Interfazg.login;
 import Clases.*;
+import Interfazg.PantallaPrincipal;
 
 public class IPC1Proyecto1_201902259 {
     //Creación del arreglo de libros
@@ -10,11 +11,18 @@ public class IPC1Proyecto1_201902259 {
     //Creación de arreglo de usuarios
     static Usuario[] usuarios = new Usuario[50];
     static int contusers = 0;
+    //Creación de arreglo de prestamos
+    static Prestamo[] prestamos = new Prestamo[200];
+    static int contpres = 0;
+    //CReación de arreglo de reportes
+    static Reporte[] reportes = new Reporte[100];
+    static int contrep = 0;
     
     public static void main(String[] args) {
         
         
-        login ventana = new login();
+        //login ventana = new login();
+        PantallaPrincipal p = new PantallaPrincipal();
         
     }
     //Metodo para guardar el libro en el arreglo de libros
@@ -103,7 +111,8 @@ public class IPC1Proyecto1_201902259 {
             }
             
         }
-    }//validando si el usuario existe 
+    }
+    //validando si el usuario existe 
     public static boolean entrusuario(String us){
         for (int i = 0; i < contusers; i++) {
             if (us.equals(usuarios[i].getUser())) {
@@ -132,4 +141,28 @@ public class IPC1Proyecto1_201902259 {
         return null;
     }
     
+     //Metodo para guardar los prestamos
+    public static void crearprestamo(Prestamo nuevo){
+        if (contpres < prestamos.length) {
+            prestamos[contpres] = nuevo;
+            contpres++;
+            
+        }
+    }
+    
+    public static void verprestamos(){
+        for (int i = 0; i < contpres; i++) {
+            System.out.println("----------------------------------------------");
+            if (prestamos[i]!=null) {
+                System.out.println("ID Libro: " + prestamos[i].getIdlibro());
+                System.out.println("ID Usuario: " + prestamos[i].getIdestudiante());
+                System.out.println("Fecha: " + prestamos[i].getFecha());
+                System.out.println("Status: "+ prestamos[i].getStatus());
+                
+                               
+                
+            }
+            
+        }
+    }
 }
