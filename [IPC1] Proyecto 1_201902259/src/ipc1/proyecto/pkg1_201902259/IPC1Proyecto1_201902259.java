@@ -20,9 +20,8 @@ public class IPC1Proyecto1_201902259 {
     
     public static void main(String[] args) {
         
-        
-        //login ventana = new login();
-        PantallaPrincipal p = new PantallaPrincipal();
+        login ventana = new login();
+        //PantallaPrincipal p = new PantallaPrincipal();
         
     }
     //Metodo para guardar el libro en el arreglo de libros
@@ -50,7 +49,13 @@ public class IPC1Proyecto1_201902259 {
             
         }
     }
-    
+    public static Libro obtenerlibro(int id){
+        for (int i = 0; i < contlibros; i++) {
+            if (id==libros[i].getId()) {
+                return libros[i];
+            }
+        } return null;
+    } 
     
     public static Object[][] tablitalibros(){
         Object[][] contenido = new Object[contlibros][7];
@@ -78,6 +83,7 @@ public class IPC1Proyecto1_201902259 {
         }
         return contenido;
     }
+    
     public static boolean validid(int id){
         for (int i = 0; i < contlibros; i++) {
             if (id==libros[i].getId()) {
@@ -164,5 +170,50 @@ public class IPC1Proyecto1_201902259 {
             }
             
         }
+    }
+    //función para retornar el nombre del usuario por medio del Id
+    public static String nameus(int Id){
+        for (int i = 0; i < contusers; i++) {
+            if (Id == usuarios[i].getId()) {
+                return usuarios[i].getUser();
+            }
+        }return null;
+    }
+       public static String namelib(int Id){
+        for (int i = 0; i < contlibros; i++) {
+            if (Id == libros[i].getId()) {
+                return libros[i].getTitulo();
+            }
+        }return null;
+    }
+    //Validaciones para verificar que exista el usuario   
+    public static boolean verfus(int Id){
+        for (int i = 0; i < contusers; i++) {
+            if (Id == usuarios[i].getId()) {
+                return true;
+            }
+        }return false;
+    }
+    //Validaciones para verificar que exista el libro
+       public static boolean verlb(int Id){
+        for (int i = 0; i < contlibros; i++) {
+            if (Id == libros[i].getId()) {
+                return true;
+            }
+        }return false;
+    }
+ 
+    
+    public static Object[][] tablitaprestamos(){
+        Object[][] contenido = new Object[contpres][4];
+        for (int i = 0; i < contpres; i++) {
+            contenido[i][0] = nameus(prestamos[i].getIdestudiante()); //se llamó la funcion nameus para retornar el nombre del usuario por medio del ID
+            contenido[i][1] = namelib(prestamos[i].getIdlibro()); //se llamó a namelib para obtener el titulo del libro
+            contenido[i][2] = prestamos[i].getFecha();
+            contenido[i][3] = prestamos[i].getStatus();
+                      
+                      
+        }
+        return contenido;
     }
 }

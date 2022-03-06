@@ -123,22 +123,14 @@ public class PestañaLibros extends JPanel implements ActionListener {
         cargas.addActionListener(this);
         cargas.setBackground(Color.lightGray);
         this.add(cargas);
+        
 
         //Diseño del Panel
         this.setLayout(null);
 
     }
 
-    public void tabla() {
-        //Tablaxd
-        String[] encabezado = {"ID Libro", "Nombre Libro", "Autor", "Tipo", "Copias", "Disponibles", "Ocupados"};
-        datos = IPC1Proyecto1_201902259.tablitalibros();
-        tablita = new JTable(datos, encabezado);
-        JScrollPane scroll = new JScrollPane(tablita);
-        scroll.setBounds(220, 10, 725, 400);
-        scroll.setVisible(true);
-        this.add(scroll);
-    }
+    
     String textcont = "";
     File archivo;
     FileReader lector;
@@ -198,7 +190,7 @@ public class PestañaLibros extends JPanel implements ActionListener {
 
         if (ae.getSource() == cargas) {
             leerarchivo();
-            tabla();
+            
         } else if (ae.getSource() == regis) {
             try {
                 int id = Integer.parseInt(numID.getText());
@@ -225,7 +217,7 @@ public class PestañaLibros extends JPanel implements ActionListener {
                     Nlibro.setText("");
                     Aut.setText("");
                     Copi.setText("");
-                    tabla();
+                    
                 }
                 else{
                     JOptionPane.showMessageDialog(this, "ID ya existente");

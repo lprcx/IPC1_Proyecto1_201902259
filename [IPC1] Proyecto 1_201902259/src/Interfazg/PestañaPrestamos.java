@@ -4,12 +4,19 @@
  */
 package Interfazg;
 
+import Clases.Libro;
 import Clases.Prestamo;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import ipc1.proyecto.pkg1_201902259.IPC1Proyecto1_201902259;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -18,7 +25,9 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -85,11 +94,8 @@ public class PestañaPrestamos extends JPanel implements ActionListener {
 
         //Tabla Prestamos
         String[] encabezado2 = {"Nombre Usuario", "Libro", "Fecha de Entrega", "Status"};
-        Object[][] xx2 = {
-            {"Patty", "Libro 1", "febrero", "entregado"},
-            {"Lourdes", "Libro 2", "marzo", "pendiente"}
-        };
-        tablita2 = new JTable(xx2, encabezado2);
+        datos2 = IPC1Proyecto1_201902259.tablitaprestamos();
+        tablita2 = new JTable(datos2, encabezado2);
         JScrollPane scroll = new JScrollPane(tablita2);
         scroll.setBounds(220, 10, 725, 400);
         scroll.setVisible(true);
@@ -108,29 +114,116 @@ public class PestañaPrestamos extends JPanel implements ActionListener {
 
     }
 
+    
+    String textcont = "";
+    File archivo;
+    FileReader lector;
+    BufferedReader buff;
+
+    public void cargamasiva() {
+        try {
+            JFileChooser busc = new JFileChooser();
+            int o = busc.showOpenDialog(this);
+            if (o == JFileChooser.APPROVE_OPTION) {
+                System.out.println(busc.getSelectedFile());
+                archivo = busc.getSelectedFile();
+
+            }
+            lector = new FileReader(archivo);
+            buff = new BufferedReader(lector);
+            String contline;
+            while ((contline = buff.readLine()) != null) {
+                textcont += contline;
+            }
+            System.out.println(textcont);
+            JsonParser JSONValue = new JsonParser();
+            Object objeto = JSONValue.parse(textcont);
+
+            JsonObject ob = (JsonObject) objeto;
+            Object arreglol = ob.get("Prestamos");
+            JsonArray arreglo = (JsonArray) arreglol;
+            for (int i = 0; i < arreglo.size(); i++) {
+                JsonObject li = arreglo.get(i).getAsJsonObject();
+                int ide = li.get("IDUsuario").getAsInt();
+                String Fecha = li.get("FechaEntrega").getAsString();
+                int idel = li.get("IDLibro").getAsInt();
+                DateTimeFormatter dtf5 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                String hoy = dtf5.format(LocalDateTime.now());
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    Date f1 = dateFormat.parse(Fecha);
+                    Date f2 = dateFormat.parse(hoy);
+                    if (IPC1Proyecto1_201902259.verfus(ide) == true && IPC1Proyecto1_201902259.verlb(idel) == true) {
+                        if (f1.before(f2)) {
+                            Prestamo nuevo = new Prestamo(ide, idel, Fecha, "Entregado");
+                            IPC1Proyecto1_201902259.crearprestamo(nuevo);
+                        } else {
+                            Prestamo nuevo = new Prestamo(ide, idel, Fecha, "Ocupado");
+                            IPC1Proyecto1_201902259.crearprestamo(nuevo);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this, "ID no válido");
+                    }
+
+                } catch (ParseException ex) {
+
+                }
+                
+                IPC1Proyecto1_201902259.verprestamos();
+                
+            }
+
+        } catch (Exception e) {
+            System.out.println("Hubo un error :c");
+        } finally {
+            try {
+                if (null != lector) {
+                    lector.close();
+                }
+            } catch (Exception e2) {
+                System.out.println(e2);
+            }
+        }
+    }
+
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == preslib) {
+        if (ae.getSource() == cargas) {
+            cargamasiva();
+        } else if (ae.getSource() == preslib) {
             int ide = Integer.parseInt(IDusu.getText());
             int idl = Integer.parseInt(IDlibro.getText());
             String fech = date.getText();
             DateTimeFormatter dtf5 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             String hoy = dtf5.format(LocalDateTime.now());
-            SimpleDateFormat dateFormat = new SimpleDateFormat ("dd/MM/yyyy");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             try {
                 Date f1 = dateFormat.parse(fech);
                 Date f2 = dateFormat.parse(hoy);
-                if (f1.before(f2)) {
-                    Prestamo nuevo = new Prestamo(ide, idl, fech, "Entregado");
-                    IPC1Proyecto1_201902259.crearprestamo(nuevo);
-                }else{
-                    Prestamo nuevo = new Prestamo(ide, idl, fech, "Ocupado");
-                    IPC1Proyecto1_201902259.crearprestamo(nuevo);
+                if (IPC1Proyecto1_201902259.verfus(ide) == true && IPC1Proyecto1_201902259.verlb(idl) == true) {
+                    if (f1.before(f2)) {
+                        Prestamo nuevo = new Prestamo(ide, idl, fech, "Entregado");
+                        IPC1Proyecto1_201902259.crearprestamo(nuevo);
+                        IPC1Proyecto1_201902259.obtenerlibro(idl).setDisponibles(IPC1Proyecto1_201902259.obtenerlibro(idl).getDisponibles()+1);
+                        IPC1Proyecto1_201902259.obtenerlibro(idl).setOcupados(IPC1Proyecto1_201902259.obtenerlibro(idl).getOcupados()-1);
+                    } else {
+                        Prestamo nuevo = new Prestamo(ide, idl, fech, "Ocupado");
+                        IPC1Proyecto1_201902259.crearprestamo(nuevo);
+                        IPC1Proyecto1_201902259.obtenerlibro(idl).setDisponibles(IPC1Proyecto1_201902259.obtenerlibro(idl).getDisponibles()-1);
+                        IPC1Proyecto1_201902259.obtenerlibro(idl).setOcupados(IPC1Proyecto1_201902259.obtenerlibro(idl).getOcupados()+1);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "ID no válido");
                 }
+
             } catch (ParseException ex) {
-                
+
             }
             IPC1Proyecto1_201902259.verprestamos();
+            
+            IDusu.setText("");
+            IDlibro.setText("");
+            date.setText("");
         }
 
     }
