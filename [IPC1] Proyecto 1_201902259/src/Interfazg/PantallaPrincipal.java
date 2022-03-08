@@ -15,7 +15,8 @@ import javax.swing.border.EmptyBorder;
 public class PantallaPrincipal extends JFrame implements ActionListener {
     private JPanel panelpestañas;
     JButton close, actualizar;
-    
+    Color rosadito = new Color(255,183,227);
+
 
     public PantallaPrincipal(){
         
@@ -48,9 +49,9 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
         
           //Boton Actualizar
         actualizar = new JButton("Actualizar");
-        actualizar.setBounds(400, 5, 150, 20);
+        actualizar.setBounds(750, 5, 150, 20);
         actualizar.setFont(new Font("Biome Light", Font.BOLD, 15));
-        actualizar.setBackground(Color.lightGray);
+        actualizar.setBackground(rosadito);
         actualizar.addActionListener(this);
         this.add(actualizar);
         

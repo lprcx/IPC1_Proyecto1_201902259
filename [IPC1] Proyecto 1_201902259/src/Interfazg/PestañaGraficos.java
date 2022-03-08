@@ -23,7 +23,7 @@ public class PestañaGraficos extends JPanel implements ActionListener {
 
 
     public PestañaGraficos() {
-
+        //grafica pastel de usuarios
         DefaultPieDataset datos1 = new DefaultPieDataset();
         datos1.setValue("Usuarios Administradores", IPC1Proyecto1_201902259.ust1());
         datos1.setValue("Usuarios Estudiantes", IPC1Proyecto1_201902259.ust2());
@@ -36,7 +36,7 @@ public class PestañaGraficos extends JPanel implements ActionListener {
         p1.setBounds(20, 50, 290, 290);
         this.add(p1);
 
-        
+        //grafica de barras de prestamos
         DefaultCategoryDataset datos2 = new DefaultCategoryDataset();
         datos2.setValue(IPC1Proyecto1_201902259.enero(), "Enero", String.valueOf(IPC1Proyecto1_201902259.enero()));
         datos2.setValue(IPC1Proyecto1_201902259.febrero(), "Febrero", String.valueOf(IPC1Proyecto1_201902259.febrero()));
@@ -58,7 +58,7 @@ public class PestañaGraficos extends JPanel implements ActionListener {
         p2.setBounds(330, 50, 290, 290);
         this.add(p2);
 
-
+        // grafica pastel de tipos de libros
         DefaultPieDataset datos3 = new DefaultPieDataset();
         datos3.setValue("Libro", IPC1Proyecto1_201902259.tl1());
         datos3.setValue("Revista", IPC1Proyecto1_201902259.tl2());

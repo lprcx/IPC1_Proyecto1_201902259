@@ -114,7 +114,6 @@ public class PestañaPrestamos extends JPanel implements ActionListener {
 
     }
 
-    
     String textcont = "";
     File archivo;
     FileReader lector;
@@ -168,9 +167,9 @@ public class PestañaPrestamos extends JPanel implements ActionListener {
                 } catch (ParseException ex) {
 
                 }
-                
+
                 IPC1Proyecto1_201902259.verprestamos();
-                
+
             }
 
         } catch (Exception e) {
@@ -201,17 +200,22 @@ public class PestañaPrestamos extends JPanel implements ActionListener {
                 Date f1 = dateFormat.parse(fech);
                 Date f2 = dateFormat.parse(hoy);
                 if (IPC1Proyecto1_201902259.verfus(ide) == true && IPC1Proyecto1_201902259.verlb(idl) == true) {
-                    if (f1.before(f2)) {
-                        Prestamo nuevo = new Prestamo(ide, idl, fech, "Entregado");
-                        IPC1Proyecto1_201902259.crearprestamo(nuevo);
-                        IPC1Proyecto1_201902259.obtenerlibro(idl).setDisponibles(IPC1Proyecto1_201902259.obtenerlibro(idl).getDisponibles()+1);
-                        IPC1Proyecto1_201902259.obtenerlibro(idl).setOcupados(IPC1Proyecto1_201902259.obtenerlibro(idl).getOcupados()-1);
-                    } else {
-                        Prestamo nuevo = new Prestamo(ide, idl, fech, "Ocupado");
-                        IPC1Proyecto1_201902259.crearprestamo(nuevo);
-                        IPC1Proyecto1_201902259.obtenerlibro(idl).setDisponibles(IPC1Proyecto1_201902259.obtenerlibro(idl).getDisponibles()-1);
-                        IPC1Proyecto1_201902259.obtenerlibro(idl).setOcupados(IPC1Proyecto1_201902259.obtenerlibro(idl).getOcupados()+1);
+                    if (IPC1Proyecto1_201902259.obtenerlibro(idl).getDisponibles() != 0) {
+                        if (f1.before(f2)) {
+                            Prestamo nuevo = new Prestamo(ide, idl, fech, "Entregado");
+                            IPC1Proyecto1_201902259.crearprestamo(nuevo);
+                            IPC1Proyecto1_201902259.obtenerlibro(idl).setDisponibles(IPC1Proyecto1_201902259.obtenerlibro(idl).getDisponibles() + 1);
+                            IPC1Proyecto1_201902259.obtenerlibro(idl).setOcupados(IPC1Proyecto1_201902259.obtenerlibro(idl).getOcupados() - 1);
+                        } else {
+                            Prestamo nuevo = new Prestamo(ide, idl, fech, "Ocupado");
+                            IPC1Proyecto1_201902259.crearprestamo(nuevo);
+                            IPC1Proyecto1_201902259.obtenerlibro(idl).setDisponibles(IPC1Proyecto1_201902259.obtenerlibro(idl).getDisponibles() - 1);
+                            IPC1Proyecto1_201902259.obtenerlibro(idl).setOcupados(IPC1Proyecto1_201902259.obtenerlibro(idl).getOcupados() + 1);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(this, "No existen copias disponibles");
                     }
+
                 } else {
                     JOptionPane.showMessageDialog(this, "ID no válido");
                 }
@@ -220,7 +224,7 @@ public class PestañaPrestamos extends JPanel implements ActionListener {
 
             }
             IPC1Proyecto1_201902259.verprestamos();
-            
+
             IDusu.setText("");
             IDlibro.setText("");
             date.setText("");

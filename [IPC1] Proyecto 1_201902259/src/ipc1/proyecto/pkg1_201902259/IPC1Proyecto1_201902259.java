@@ -229,6 +229,7 @@ public class IPC1Proyecto1_201902259 {
         return contenido;
     }
 
+    //funcion para retornar cantidad de usuarios tipo1
     public static int ust1() {
         int contador = 0;
         for (int i = 0; i < contusers; i++) {
@@ -239,6 +240,7 @@ public class IPC1Proyecto1_201902259 {
         return contador;
     }
 
+    //funcion para retornar cantidad de usuarios tipo2
     public static int ust2() {
         int contador = 0;
         for (int i = 0; i < contusers; i++) {
@@ -249,6 +251,7 @@ public class IPC1Proyecto1_201902259 {
         return contador;
     }
 
+    //funcion para retornar la cantidad de libros
     public static int tl1() {
         int contador = 0;
         for (int i = 0; i < contlibros; i++) {
@@ -259,6 +262,7 @@ public class IPC1Proyecto1_201902259 {
         return contador;
     }
 
+    //funcion para retornar la cantidad de revistas
     public static int tl2() {
         int contador = 0;
         for (int i = 0; i < contlibros; i++) {
@@ -269,6 +273,7 @@ public class IPC1Proyecto1_201902259 {
         return contador;
     }
 
+    //funcion para retornar la cantidad de libros electronicos
     public static int tl3() {
         int contador = 0;
         for (int i = 0; i < contlibros; i++) {
@@ -279,6 +284,7 @@ public class IPC1Proyecto1_201902259 {
         return contador;
     }
 
+    //funciones para retornar la cantidad de libros prestados de cada mes
     public static int enero() {
         int contador = 0;
         for (int i = 0; i < contpres; i++) {
@@ -509,4 +515,49 @@ public class IPC1Proyecto1_201902259 {
         return contador;
     }
 
+    public static int contadoru() {
+        return contusers;
+    }
+
+    public static Usuario[] arreglou() {
+        return usuarios;
+    }
+
+    //Metodo para guardar el libro en el arreglo de libros
+    public static void crearreporte(Reporte nuevo) {
+        if (contrep < reportes.length) {
+            reportes[contrep] = nuevo;
+            contrep++;
+
+        }
+    }
+
+
+    public static Object[][] tablitareportes() {
+        Object[][] contenido = new Object[contrep][3];
+        for (int i = 0; i < contrep; i++) {
+            contenido[i][0] = reportes[i].getFecha();
+            contenido[i][1] = reportes[i].getUsuario();
+            contenido[i][2] = reportes[i].getTipo();
+                       
+        }
+        return contenido;
+    }
+
+    
+     public static int contadorl() {
+        return contlibros;
+    }
+
+    public static Libro[] arreglol() {
+        return libros;
+    }
+    
+    public static int contadorp() {
+        return contpres;
+    }
+
+    public static Prestamo[] arreglop() {
+        return prestamos;
+    }
 }

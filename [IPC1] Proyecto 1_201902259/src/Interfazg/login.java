@@ -13,6 +13,10 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class login extends JFrame implements ActionListener {
+    
+    Color rosita = new Color(250, 219, 216 );
+    Color moradito = new Color(235, 222, 240);
+    Color celestito = new Color(174, 214, 241);
 
     //Label
     JLabel titulo, use, pass;
@@ -65,7 +69,7 @@ public class login extends JFrame implements ActionListener {
         botlogin.setBounds(120, 250, 150, 30);
         botlogin.setFont(new Font("Biome Light", Font.BOLD, 18));
         botlogin.addActionListener(this);
-        botlogin.setBackground(Color.lightGray);
+        botlogin.setBackground(moradito);
         this.add(botlogin);
 
         //Boton de carga masiva
@@ -73,7 +77,7 @@ public class login extends JFrame implements ActionListener {
         botcarga.setBounds(250, 335, 115, 20);
         botcarga.setFont(new Font("Biome Light", Font.BOLD, 12));
         botcarga.addActionListener(this);
-        botcarga.setBackground(Color.lightGray);
+        botcarga.setBackground(moradito);
         this.add(botcarga);
 
         //ICONO DE LA APLICACION
@@ -85,6 +89,7 @@ public class login extends JFrame implements ActionListener {
         this.setBounds(500, 150, 400, 400);
         this.setResizable(false);
         this.setVisible(true);
+        this.getContentPane().setBackground(rosita);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
