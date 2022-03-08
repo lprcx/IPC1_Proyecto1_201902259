@@ -20,7 +20,7 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
     Color rosadito = new Color(255,183,227);
     Color rosita = new Color(250, 219, 216 );
     Color moradito = new Color(235, 222, 240);
-    Color celestito = new Color(174, 214, 241);
+    Color celestito = new Color(214, 234, 248);
     Color verdi = new Color(189, 238, 194);
 
 
@@ -43,6 +43,7 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
         
         PestañaLibros lib = new PestañaLibros();
         conjpest.addTab("Libros", null, lib, null);
+        this.setBackground(rosita);
         
         PestañaPrestamos pres = new PestañaPrestamos();
         conjpest.addTab("Prestamos", null, pres, null);
@@ -54,9 +55,9 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
         conjpest.addTab("Graficos", null, graf, null);
         //colores
         conjpest.setBackgroundAt(0, verdi);
-        conjpest.setBackgroundAt(1, celestito);
-        conjpest.setBackgroundAt(2, moradito);
-        conjpest.setBackgroundAt(3, rosadito);
+        conjpest.setBackgroundAt(1, verdi);
+        conjpest.setBackgroundAt(2, verdi);
+        conjpest.setBackgroundAt(3, verdi);
         
         //imagen 
         Image imag = new ImageIcon("img/c.png").getImage();
@@ -68,11 +69,11 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
         this.add(imagen);
 
         
-          //Boton Actualizar
+        //Boton Actualizar
         actualizar = new JButton("Actualizar");
         actualizar.setBounds(750, 5, 150, 20);
         actualizar.setFont(new Font("Biome Light", Font.BOLD, 15));
-        actualizar.setBackground(rosadito);
+        actualizar.setBackground(celestito);
         actualizar.addActionListener(this);
         this.add(actualizar);
         

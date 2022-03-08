@@ -40,7 +40,7 @@ public class PestañaReportes extends JPanel implements ActionListener {
     Color rosadito = new Color(255,183,227);
     Color rosita = new Color(250, 219, 216 );
     Color moradito = new Color(235, 222, 240);
-    Color celestito = new Color(174, 214, 241);
+    Color celestito = new Color(214, 234, 248);
 
     public PestañaReportes() {
         //Tipo de REporte
@@ -60,7 +60,7 @@ public class PestañaReportes extends JPanel implements ActionListener {
         gen = new JButton("Generar Reporte");
         gen.setBounds(45, 70, 150, 20);
         gen.setFont(new Font("Biome Light", Font.BOLD, 12));
-        gen.setBackground(rosadito);
+        gen.setBackground(celestito);
         gen.addActionListener(this);
         this.add(gen);
 
@@ -75,6 +75,7 @@ public class PestañaReportes extends JPanel implements ActionListener {
 
         //Diseño del Panel
         this.setLayout(null);
+        this.setBackground(moradito);
 
     }
 

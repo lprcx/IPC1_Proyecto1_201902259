@@ -21,6 +21,9 @@ import java.io.FileReader;
 public class PestañaLibros extends JPanel implements ActionListener {
     
     Color rosadito = new Color(255,183,227);
+    Color amarelo = new Color(252, 253, 206);
+    Color moradito = new Color(235, 222, 240);
+    Color celestito = new Color(214, 234, 248);
 
     JLabel ID, libro, autor, cop, tip;
     JTextField numID, Nlibro, Aut, Copi;
@@ -115,7 +118,7 @@ public class PestañaLibros extends JPanel implements ActionListener {
         regis.setBounds(20, 250, 115, 25);
         regis.setFont(new Font("Biome Light", Font.BOLD, 15));
         regis.addActionListener(this);
-        regis.setBackground(rosadito);
+        regis.setBackground(celestito);
         this.add(regis);
 
         //Boton de Carga masiva en la tabla
@@ -123,13 +126,14 @@ public class PestañaLibros extends JPanel implements ActionListener {
         cargas.setBounds(20, 300, 150, 25);
         cargas.setFont(new Font("Biome Light", Font.BOLD, 15));
         cargas.addActionListener(this);
-        cargas.setBackground(rosadito);
+        cargas.setBackground(celestito);
         this.add(cargas);
         
 
         //Diseño del Panel
         this.setLayout(null);
-
+        this.setBackground(moradito);
+ 
     }
 
     
