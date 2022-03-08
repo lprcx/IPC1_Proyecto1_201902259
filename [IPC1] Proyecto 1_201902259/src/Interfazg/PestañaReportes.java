@@ -37,6 +37,10 @@ public class PestañaReportes extends JPanel implements ActionListener {
     JComboBox tipor;
     static JTable tablita3;
     static Object[][] datos3;
+    Color rosadito = new Color(255,183,227);
+    Color rosita = new Color(250, 219, 216 );
+    Color moradito = new Color(235, 222, 240);
+    Color celestito = new Color(174, 214, 241);
 
     public PestañaReportes() {
         //Tipo de REporte
@@ -54,9 +58,9 @@ public class PestañaReportes extends JPanel implements ActionListener {
 
         //Botoncito generar
         gen = new JButton("Generar Reporte");
-        gen.setBounds(40, 70, 75, 20);
+        gen.setBounds(45, 70, 150, 20);
         gen.setFont(new Font("Biome Light", Font.BOLD, 12));
-        gen.setBackground(Color.lightGray);
+        gen.setBackground(rosadito);
         gen.addActionListener(this);
         this.add(gen);
 

@@ -21,6 +21,10 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 public class PestañaGraficos extends JPanel implements ActionListener {
 
+    Color rosadito = new Color(255, 183, 227);
+    Color piel = new Color(249, 184, 167);
+    Color moradito = new Color(235, 222, 240);
+    Color celestito = new Color(174, 214, 241);
 
     public PestañaGraficos() {
         //grafica pastel de usuarios
@@ -31,7 +35,7 @@ public class PestañaGraficos extends JPanel implements ActionListener {
         PiePlot3D pie1 = (PiePlot3D) graficaus.getPlot();
         pie1.setForegroundAlpha(0.40f);
         pie1.setInteriorGap(0.05);
-        pie1.setBackgroundPaint(Color.LIGHT_GRAY);
+        pie1.setBackgroundPaint(piel);
         ChartPanel p1 = new ChartPanel(graficaus);
         p1.setBounds(20, 50, 290, 290);
         this.add(p1);
@@ -53,7 +57,7 @@ public class PestañaGraficos extends JPanel implements ActionListener {
         JFreeChart barras = ChartFactory.createBarChart("Cantidad de Libros Prestados por Fecha", "mes", "cantidad de libros", datos2, PlotOrientation.VERTICAL, true, false, false);
         barras.setBackgroundPaint(Color.PINK);
         barras.getTitle().setPaint(Color.BLACK);
-        barras.getTitle().setFont(new Font ("Century Gothic", Font.PLAIN, 15));
+        barras.getTitle().setFont(new Font("Century Gothic", Font.PLAIN, 15));
         ChartPanel p2 = new ChartPanel(barras);
         p2.setBounds(330, 50, 290, 290);
         this.add(p2);
@@ -67,7 +71,7 @@ public class PestañaGraficos extends JPanel implements ActionListener {
         PiePlot3D pie2 = (PiePlot3D) graficalb.getPlot();
         pie2.setForegroundAlpha(0.40f);
         pie2.setInteriorGap(0.05);
-        pie2.setBackgroundPaint(Color.LIGHT_GRAY);
+        pie2.setBackgroundPaint(piel);
         ChartPanel p3 = new ChartPanel(graficalb);
         p3.setBounds(640, 50, 290, 290);
         this.add(p3);

@@ -5,6 +5,7 @@
 package Interfazg;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -15,7 +16,12 @@ import javax.swing.border.EmptyBorder;
 public class PantallaPrincipal extends JFrame implements ActionListener {
     private JPanel panelpestañas;
     JButton close, actualizar;
+    JLabel imagen;
     Color rosadito = new Color(255,183,227);
+    Color rosita = new Color(250, 219, 216 );
+    Color moradito = new Color(235, 222, 240);
+    Color celestito = new Color(174, 214, 241);
+    Color verdi = new Color(189, 238, 194);
 
 
     public PantallaPrincipal(){
@@ -46,6 +52,21 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
         
         PestañaGraficos graf = new PestañaGraficos();
         conjpest.addTab("Graficos", null, graf, null);
+        //colores
+        conjpest.setBackgroundAt(0, verdi);
+        conjpest.setBackgroundAt(1, celestito);
+        conjpest.setBackgroundAt(2, moradito);
+        conjpest.setBackgroundAt(3, rosadito);
+        
+        //imagen 
+        Image imag = new ImageIcon("img/c.png").getImage();
+        ImageIcon imge = new ImageIcon(imag.getScaledInstance(30, 30, Image.SCALE_SMOOTH));
+        imagen = new JLabel(imge);
+        imagen.setLayout(null);
+        imagen.setBounds(700,10, 500, 30);
+        imagen.setVisible(true);
+        this.add(imagen);
+
         
           //Boton Actualizar
         actualizar = new JButton("Actualizar");
@@ -64,6 +85,7 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
         this.setBounds(130,100,1000,500);
         this.setResizable(false);
         this.setVisible(true);
+        this.getContentPane().setBackground(rosita);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         

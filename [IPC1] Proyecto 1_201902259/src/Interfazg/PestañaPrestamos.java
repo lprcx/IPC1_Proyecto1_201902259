@@ -40,6 +40,10 @@ public class PestañaPrestamos extends JPanel implements ActionListener {
     JButton preslib, cargas;
     static JTable tablita2;
     static Object[][] datos2;
+    Color rosadito = new Color(255,183,227);
+    Color rosita = new Color(250, 219, 216 );
+    Color moradito = new Color(235, 222, 240);
+    Color celestito = new Color(174, 214, 241);
 
     public PestañaPrestamos() {
         //inicio usuario
@@ -88,7 +92,7 @@ public class PestañaPrestamos extends JPanel implements ActionListener {
         preslib = new JButton("Prestar libro");
         preslib.setBounds(20, 250, 150, 20);
         preslib.setFont(new Font("Biome Light", Font.BOLD, 15));
-        preslib.setBackground(Color.lightGray);
+        preslib.setBackground(rosadito);
         preslib.addActionListener(this);
         this.add(preslib);
 
@@ -106,7 +110,7 @@ public class PestañaPrestamos extends JPanel implements ActionListener {
         cargas.setBounds(20, 300, 150, 25);
         cargas.setFont(new Font("Biome Light", Font.BOLD, 15));
         cargas.addActionListener(this);
-        cargas.setBackground(Color.lightGray);
+        cargas.setBackground(rosadito);
         this.add(cargas);
 
         //Diseño del Panel

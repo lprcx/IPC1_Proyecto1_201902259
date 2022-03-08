@@ -27,6 +27,9 @@ public class CargaUsuario extends JFrame implements ActionListener {
 
     JButton regresar, botcarga;
     TextArea cuad;
+    Color rosita = new Color(250, 219, 216 );
+    Color moradito = new Color(235, 222, 240);
+    Color celestito = new Color(174, 214, 241);
 
     public CargaUsuario() {
         //Area del texto 
@@ -34,7 +37,7 @@ public class CargaUsuario extends JFrame implements ActionListener {
         cuad.setBounds(10, 10, 480, 300);
         cuad.setVisible(true);
         cuad.setEditable(true);
-        cuad.setFont(new Font("Biome Light", Font.PLAIN, 18));
+        cuad.setFont(new Font("Consolas", Font.PLAIN, 12));
         this.add(cuad);
 
         //Boton de login
@@ -42,7 +45,7 @@ public class CargaUsuario extends JFrame implements ActionListener {
         regresar.setBounds(90, 400, 150, 30);
         regresar.setFont(new Font("Biome Light", Font.BOLD, 18));
         regresar.addActionListener(this);
-        regresar.setBackground(Color.lightGray);
+        regresar.setBackground(moradito);
         this.add(regresar);
 
         //Boton de carga masiva
@@ -50,7 +53,7 @@ public class CargaUsuario extends JFrame implements ActionListener {
         botcarga.setBounds(250, 400, 150, 30);
         botcarga.setFont(new Font("Biome Light", Font.BOLD, 12));
         botcarga.addActionListener(this);
-        botcarga.setBackground(Color.lightGray);
+        botcarga.setBackground(moradito);
         this.add(botcarga);
 
         //ventana
@@ -59,6 +62,7 @@ public class CargaUsuario extends JFrame implements ActionListener {
         this.setBounds(375, 100, 500, 500);
         this.setResizable(false);
         this.setVisible(true);
+        this.getContentPane().setBackground(rosita);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
