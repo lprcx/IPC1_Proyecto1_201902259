@@ -119,81 +119,14 @@ public class PestañaPrestamos extends JPanel implements ActionListener {
 
     }
 
-    String textcont = "";
-    File archivo;
-    FileReader lector;
-    BufferedReader buff;
 
-    public void cargamasiva() {
-        try {
-            JFileChooser busc = new JFileChooser();
-            int o = busc.showOpenDialog(this);
-            if (o == JFileChooser.APPROVE_OPTION) {
-                System.out.println(busc.getSelectedFile());
-                archivo = busc.getSelectedFile();
 
-            }
-            lector = new FileReader(archivo);
-            buff = new BufferedReader(lector);
-            String contline;
-            while ((contline = buff.readLine()) != null) {
-                textcont += contline;
-            }
-            System.out.println(textcont);
-            JsonParser JSONValue = new JsonParser();
-            Object objeto = JSONValue.parse(textcont);
-
-            JsonObject ob = (JsonObject) objeto;
-            Object arreglol = ob.get("Prestamos");
-            JsonArray arreglo = (JsonArray) arreglol;
-            for (int i = 0; i < arreglo.size(); i++) {
-                JsonObject li = arreglo.get(i).getAsJsonObject();
-                int ide = li.get("IDUsuario").getAsInt();
-                String Fecha = li.get("FechaEntrega").getAsString();
-                int idel = li.get("IDLibro").getAsInt();
-                DateTimeFormatter dtf5 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                String hoy = dtf5.format(LocalDateTime.now());
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                try {
-                    Date f1 = dateFormat.parse(Fecha);
-                    Date f2 = dateFormat.parse(hoy);
-                    if (IPC1Proyecto1_201902259.verfus(ide) == true && IPC1Proyecto1_201902259.verlb(idel) == true) {
-                        if (f1.before(f2)) {
-                            Prestamo nuevo = new Prestamo(ide, idel, Fecha, "Entregado");
-                            IPC1Proyecto1_201902259.crearprestamo(nuevo);
-                        } else {
-                            Prestamo nuevo = new Prestamo(ide, idel, Fecha, "Ocupado");
-                            IPC1Proyecto1_201902259.crearprestamo(nuevo);
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(this, "ID no válido");
-                    }
-
-                } catch (ParseException ex) {
-
-                }
-
-                IPC1Proyecto1_201902259.verprestamos();
-
-            }
-
-        } catch (Exception e) {
-            System.out.println("Hubo un error :c");
-        } finally {
-            try {
-                if (null != lector) {
-                    lector.close();
-                }
-            } catch (Exception e2) {
-                System.out.println(e2);
-            }
-        }
-    }
+    
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == cargas) {
-            cargamasiva();
+            CargaPrestamos c = new CargaPrestamos();
         } else if (ae.getSource() == preslib) {
             int ide = Integer.parseInt(IDusu.getText());
             int idl = Integer.parseInt(IDlibro.getText());

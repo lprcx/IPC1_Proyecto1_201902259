@@ -19,15 +19,15 @@ import java.io.File;
 import java.io.FileReader;
 
 public class PestañaLibros extends JPanel implements ActionListener {
-    
-    Color rosadito = new Color(255,183,227);
+
+    Color rosadito = new Color(255, 183, 227);
     Color amarelo = new Color(252, 253, 206);
     Color moradito = new Color(235, 222, 240);
     Color celestito = new Color(214, 234, 248);
 
     JLabel ID, libro, autor, cop, tip;
     JTextField numID, Nlibro, Aut, Copi;
-    JButton regis, cargas;
+    JButton regis, botcarga;
     JComboBox tipo;
     static JTable tablita;
     static Object[][] datos;
@@ -122,27 +122,25 @@ public class PestañaLibros extends JPanel implements ActionListener {
         this.add(regis);
 
         //Boton de Carga masiva en la tabla
-        cargas = new JButton("Carga Masiva");
-        cargas.setBounds(20, 300, 150, 25);
-        cargas.setFont(new Font("Biome Light", Font.BOLD, 15));
-        cargas.addActionListener(this);
-        cargas.setBackground(celestito);
-        this.add(cargas);
-        
+        botcarga = new JButton("Carga Masiva");
+        botcarga.setBounds(20, 300, 150, 25);
+        botcarga.setFont(new Font("Biome Light", Font.BOLD, 15));
+        botcarga.addActionListener(this);
+        botcarga.setBackground(celestito);
+        this.add(botcarga);
 
         //Diseño del Panel
         this.setLayout(null);
         this.setBackground(moradito);
- 
+
     }
 
-    
     String textcont = "";
     File archivo;
     FileReader lector;
     BufferedReader buff;
 
-    public void leerarchivo() {
+    /*public void leerarchivo() {
         try {
             JFileChooser busc = new JFileChooser();
             int o = busc.showOpenDialog(this);
@@ -189,15 +187,13 @@ public class PestañaLibros extends JPanel implements ActionListener {
                 System.out.println(e2);
             }
         }
-    }
-
+    }*/
     @Override
     public void actionPerformed(ActionEvent ae) {
 
-        if (ae.getSource() == cargas) {
-            leerarchivo();
-            
-        } else if (ae.getSource() == regis) {
+        /* if (ae.getSource() == cargas) {
+            leerarchivo(); */
+        if (ae.getSource() == regis) {
             try {
                 int id = Integer.parseInt(numID.getText());
                 String titulo = Nlibro.getText();
@@ -223,9 +219,8 @@ public class PestañaLibros extends JPanel implements ActionListener {
                     Nlibro.setText("");
                     Aut.setText("");
                     Copi.setText("");
-                    
-                }
-                else{
+
+                } else {
                     JOptionPane.showMessageDialog(this, "ID ya existente");
                 }
 
@@ -233,7 +228,9 @@ public class PestañaLibros extends JPanel implements ActionListener {
 
             }
 
+        } else if (ae.getSource() == botcarga) {
+            CargaLibros c = new CargaLibros();
+            
         }
     }
-
 }
