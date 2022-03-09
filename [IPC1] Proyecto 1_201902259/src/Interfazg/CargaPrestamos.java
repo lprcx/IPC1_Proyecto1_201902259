@@ -113,7 +113,7 @@ public class CargaPrestamos extends JFrame implements ActionListener {
                     JOptionPane.showMessageDialog(this, "Cuadro de texto vacío, por favor ingrese el texto");
                 }
                 IPC1Proyecto1_201902259.verprestamos();
-                JOptionPane.showMessageDialog(this, "Libros Cargados Exitosamente c:");
+                JOptionPane.showMessageDialog(this, "Prestamos Cargados Exitosamente c:");
             } catch (Exception e) {
 
             }

@@ -38,7 +38,7 @@ public class IPC1Proyecto1_201902259 {
 
         }
     }
-
+    //Método para obtener datos de los libros y verlos en consola
     public static void verlibros() {
         for (int i = 0; i < contlibros; i++) {
             System.out.println("----------------------------------------------");
@@ -55,7 +55,7 @@ public class IPC1Proyecto1_201902259 {
 
         }
     }
-
+    //Función para obtener el objeto libro
     public static Libro obtenerlibro(int id) {
         for (int i = 0; i < contlibros; i++) {
             if (id == libros[i].getId()) {
@@ -64,7 +64,7 @@ public class IPC1Proyecto1_201902259 {
         }
         return null;
     }
-
+    //Tabla de libros, donde retorna una matriz de objetos
     public static Object[][] tablitalibros() {
         Object[][] contenido = new Object[contlibros][7];
         for (int i = 0; i < contlibros; i++) {
@@ -89,7 +89,7 @@ public class IPC1Proyecto1_201902259 {
         }
         return contenido;
     }
-
+    //función para validar si existe el ID
     public static boolean validid(int id) {
         for (int i = 0; i < contlibros; i++) {
             if (id == libros[i].getId()) {
@@ -144,7 +144,7 @@ public class IPC1Proyecto1_201902259 {
         }
         return false;
     }
-
+    //Función para retornar un objeto usuario
     public static Usuario retornus(String us) {
         for (int i = 0; i < contusers; i++) {
             if (us.equals(usuarios[i].getUser())) {
@@ -187,7 +187,7 @@ public class IPC1Proyecto1_201902259 {
         }
         return null;
     }
-
+    //Función para retornar el nombre del libro por medio del ID
     public static String namelib(int Id) {
         for (int i = 0; i < contlibros; i++) {
             if (Id == libros[i].getId()) {
@@ -216,7 +216,7 @@ public class IPC1Proyecto1_201902259 {
         }
         return false;
     }
-
+    //tabla para retornar una matriz de objetos para la tabla de prestamos
     public static Object[][] tablitaprestamos() {
         Object[][] contenido = new Object[contpres][4];
         for (int i = 0; i < contpres; i++) {
@@ -514,11 +514,11 @@ public class IPC1Proyecto1_201902259 {
         }
         return contador;
     }
-
+        //función contador de usuarios
     public static int contadoru() {
         return contusers;
     }
-
+    //arreglo de usuarios
     public static Usuario[] arreglou() {
         return usuarios;
     }
@@ -532,7 +532,7 @@ public class IPC1Proyecto1_201902259 {
         }
     }
 
-
+        //Tabla de Reportes
     public static Object[][] tablitareportes() {
         Object[][] contenido = new Object[contrep][3];
         for (int i = 0; i < contrep; i++) {
@@ -544,19 +544,19 @@ public class IPC1Proyecto1_201902259 {
         return contenido;
     }
 
-    
+        //Función para retornar el contador de libros
      public static int contadorl() {
         return contlibros;
     }
-
+        //Función para retornar el arreglo de libros
     public static Libro[] arreglol() {
         return libros;
     }
-    
+        //Función para retornar el contador de prestamos
     public static int contadorp() {
         return contpres;
     }
-
+        //Función para retornar el arreglo de prestamos
     public static Prestamo[] arreglop() {
         return prestamos;
     }
